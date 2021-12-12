@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialogVisible" persistent max-width="600">
     <v-card @click="closeDialog">
-      <v-card-title>{{ photo.title }}</v-card-title>
+      <v-card-title>{{ fullTitle }}</v-card-title>
       <v-card-text>
         <v-img :src="photo.url" />
       </v-card-text>
@@ -25,6 +25,12 @@ export default {
   methods: {
     closeDialog() {
       this.$emit("closeDialog");
+    }
+  },
+
+  computed: {
+    fullTitle() {
+      return `Image name - ${this.photo.title}`;
     }
   }
 };

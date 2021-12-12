@@ -1,6 +1,7 @@
 <template>
   <v-container>
-    <PhotoForm @addPhoto="addPhoto" />
+    <PhotoForm v-if="photos.length < 11" @addPhoto="addPhoto" />
+    <div v-else>You can't add any photo anymore</div>
     <v-row>
       <Photo
         :key="photo.id"
