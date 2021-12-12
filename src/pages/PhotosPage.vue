@@ -1,19 +1,15 @@
 <template>
   <v-container>
-    <PhotoForm />
+    <PhotoForm @addPhoto="addPhoto" />
     <v-row>
-      <Photo
-        :key="photo.id"
-        v-for="photo in photos"
-        :photo="photo"
-      />
+      <Photo :key="photo.id" v-for="photo in photos" :photo="photo" />
     </v-row>
   </v-container>
 </template>
 
 <script>
 import Photo from "../components/photo/Photo";
-import PhotoForm from '../components/photo/PhotoForm';
+import PhotoForm from "../components/photo/PhotoForm";
 
 export default {
   components: { Photo, PhotoForm },
@@ -27,6 +23,10 @@ export default {
       this.axios
         .get("https://jsonplaceholder.typicode.com/photos?_limit=10")
         .then((response) => (this.photos = response.data));
+    },
+
+    addPhoto(photo) {
+      this.photos.push(photo);
     },
   },
 
