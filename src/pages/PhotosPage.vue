@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <PhotoForm />
     <v-row>
       <Photo
         :key="photo.id"
@@ -12,8 +13,10 @@
 
 <script>
 import Photo from "../components/photo/Photo";
+import PhotoForm from '../components/photo/PhotoForm';
+
 export default {
-  components: { Photo },
+  components: { Photo, PhotoForm },
 
   data: () => ({
     photos: [],
