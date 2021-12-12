@@ -1,12 +1,12 @@
 <template>
-  <v-col cols="4">
-    <v-card @click="openPhoto">
+  <v-dialog v-model="dialogVisible" persistent max-width="600">
+    <v-card @click="closeDialog">
       <v-card-title>{{ photo.title }}</v-card-title>
       <v-card-text>
-        <v-img width="200" height="200" :src="photo.url" />
+        <v-img :src="photo.url" />
       </v-card-text>
     </v-card>
-  </v-col>
+  </v-dialog>
 </template>
 
 <script>
@@ -16,13 +16,17 @@ export default {
       type: Object,
       required: true,
     },
+    dialogVisible: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   methods: {
-    openPhoto() {
-      this.$emit("openPhoto", this.photo);
-    },
-  },
+    closeDialog() {
+      this.$emit("closeDialog");
+    }
+  }
 };
 </script>
 
